@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
+import dev.search.elasticsearch.customdao.CustomEmailRepository;
 import dev.search.elasticsearch.entities.Email;
 
 /**
@@ -11,8 +12,9 @@ import dev.search.elasticsearch.entities.Email;
  * @author Deivarayan Azhagappan
  *
  */
-public interface EmailRepository extends ElasticsearchRepository <Email, String > {
+public interface EmailRepository extends ElasticsearchRepository <Email, String >,
+  CustomEmailRepository {
  
-  public List <Email> findByText(String text);
+  public List <Email> findByTextLikeOrSenderLike(String text, String sender);
 
 }

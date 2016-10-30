@@ -3,6 +3,7 @@ package dev.search.elasticsearch.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +18,7 @@ import dev.search.elasticsearch.service.EmailService;
  *
  */
 @RestController
+@CrossOrigin
 @RequestMapping("/email")
 public class EmailRestController {
 
@@ -25,6 +27,7 @@ public class EmailRestController {
 
   @RequestMapping(path = "/text", method = { RequestMethod.GET })
   public List<Email> getEmail(@RequestParam String text) {
-    return emailService.findByText(text);
+    List<Email> emails = emailService.findByText(text);
+    return emails;
   }
  }

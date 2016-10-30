@@ -23,7 +23,20 @@ public class EmailService {
     if(!JsonConvertor.isInitialized()) {
       convertor.initialize();  
     }
+
+    if(text.contains(" ")) {
+      return emailRepository.containsText(text);
+    }
     
-    return emailRepository.findByText(text);  
+    return emailRepository.findByTextLikeOrSenderLike(text, text);
+  }
+
+  // For Junit testing
+  public void setEmailRepository(EmailRepository emailRepository) {
+    this.emailRepository = emailRepository;
+  }
+
+  public void setJsonConvertor(JsonConvertor convertor) {
+    this.convertor = convertor;
   }
 }

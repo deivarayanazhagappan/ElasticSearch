@@ -1,17 +1,10 @@
 package dev.search.elasticsearch.entities;
 
-import java.io.IOException;
 import java.util.List;
 
 import org.jongo.marshall.jackson.oid.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
-
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  * 
@@ -23,7 +16,7 @@ public class Email {
 
   @Id
   @ObjectId
-  private String _id;
+  private String id;
 
   private String sender;
 
@@ -53,12 +46,14 @@ public class Email {
 
   private String subject;
 
-  public String get_id() {
-    return _id;
+  private String docid;
+
+  public String getId() {
+    return id;
   }
 
-  public void set_id(String _id) {
-    this._id = _id;
+  public void setId(String id) {
+    this.id = id;
   }
 
   public String getSender() {
@@ -173,4 +168,11 @@ public class Email {
     this.subject = subject;
   }
 
+  public String getDocid() {
+    return docid;
+  }
+
+  public void setDocid(String docid) {
+    this.docid = docid;
+  }
 }

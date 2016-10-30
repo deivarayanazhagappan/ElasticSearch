@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Elastic search</title>
+        <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+    </head>
+
+    <body>
+	Enter search text: <input type="text" id="input">
+	<button onclick="buttonClick()">Search</button>
+	
+	<script>
+	
+	function buttonClick() {
+	
+	    $('.output').text("")
+	    var inputValue = document.getElementById('input').value;
+        var request = $.ajax({
+              type: "GET",
+              dataType: "json",
+              url: "http://localhost:8080/email/text?text="+inputValue,
+        });
+
+        request.done(function success(response, status, xhr) {
+		    var sender="";
+			var docid="";
+            $.each(response, function(index, value) {
+              $('.output').append("Doc id:"+value.docid + ", sender: "+ value.sender + " <br />");
+			});
+        });
+
+        request.fail(function(jqXHR, textStatus) {
+            alert( "Request failed: " + textStatus );
+        });
+    }
+	</script>
+    <div>
+            <p class="output"></p>
+        </div>
+    </body>
+</html>
