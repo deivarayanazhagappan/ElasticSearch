@@ -6,19 +6,19 @@ When the server receives the request, it queries the elastic search server and r
 After client receives the response, it displays the output to the user.
 
 ## Technologies and Framework used:
-Java 8
-Spring boot
-Elastic search
-JSON
-HTML (Client)
-JQuery (Client)
-Tomcat
-Maven
+- Java 8 
+- Spring boot
+- Elastic search
+- JSON
+- HTML (Client)
+- JQuery (Client)
+- Tomcat
+- Maven
 
 ## Testing frameworks used
-Spring boot test
-Junit 4
-Mockito
+- Spring boot test
+- Junit 4
+- Mockito
 
 ## How to run the project:
 ### Prerequisites:
